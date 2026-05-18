@@ -31,13 +31,13 @@ const CLR_PURPLE = '#a78bfa';
    2.  DATASET
    ────────────────────────────────────────────── */
 const DATA = {
-  kpi: {
-    revenue:   12503560,
-    units:      84720,
-    customers:    358,
-    profit:    8565260,
-    revenueTarget: 16500000,
-  },
+kpi: {
+  revenue: 12503560,
+  units: 84720,
+  customers: 3580,
+  profit: 8565260,
+  revenueTarget: 16500000
+},
 
   weekly: {
     labels: Array.from({length: 21}, (_, i) => `W${i + 1}`),
@@ -90,24 +90,25 @@ const DATA = {
 /* ──────────────────────────────────────────────
    3.  COUNTER ANIMATION
    ────────────────────────────────────────────── */
-function animateCounter(el, target, prefix='', suffix='', decimals=0, duration=1600) {
-  const start = performance.now();
-  const fmt = v => {
-    const n = Math.round(v);
-    if (n >= 1e6) return prefix + (n/1e6).toFixed(1) + 'M' + suffix;
-    if (n >= 1e3) return prefix + (n/1e3).toFixed(decimals ? 1 : 0) + (n < 1e6 ? 'K' : '') + suffix;
-    return prefix + n.toLocaleString('en-IN') + suffix;
-  };
-  const step = ts => {
-    const p  = Math.min((ts - start) / duration, 1);
-    const ease = 1 - Math.pow(1 - p, 3);
-    el.textContent = fmt(target * ease);
-    if (p < 1) requestAnimationFrame(step);
-    else el.textContent = fmt(target);
-  };
-  requestAnimationFrame(step);
-}
+function animateCounter(el, target, prefix = '', suffix = '') {
 
+  let current = 0;
+  const increment = target / 100;
+
+  const counter = setInterval(() => {
+
+    current += increment;
+
+    if (current >= target) {
+      current = target;
+      clearInterval(counter);
+    }
+
+    el.textContent =
+      prefix + Math.round(current).toLocaleString('en-IN') + suffix;
+
+  }, 20);
+}
 function initKPICards() {
   const { revenue, units, customers, profit } = DATA.kpi;
   animateCounter(document.getElementById('kv-revenue'),   revenue,   '₹');
@@ -463,13 +464,20 @@ document.querySelector('.export-btn').addEventListener('click', () => {
 /* ──────────────────────────────────────────────
    13. INIT ALL
    ────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
+window.onload = function () {
+
   initKPICards();
-  initWeeklyChart();
-  initTargetChart();
-  initMonthlyChart();
-  initCategoryChart();
-  initSparklines();
+
+  try {
+    initWeeklyChart();
+    initTargetChart();
+    initMonthlyChart();
+    initCategoryChart();
+    initSparklines();
+  } catch (err) {
+    console.log("Chart error:", err);
+  }
+
   renderProductsTable();
   initRegions();
-});
+};
