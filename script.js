@@ -1,78 +1,67 @@
-// Weekly Production Chart
+// Production Chart
 new Chart(document.getElementById("productionChart"), {
     type: "bar",
     data: {
-        labels:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],
+        labels:["Jan","Feb","Mar","Apr","May","Jun"],
         datasets:[{
-            label:"Food Produced",
-            data:[100,150,180,120,200,220,250]
+            label:"Production KG",
+            data:[18000,19450,20100,22300,24850,23400]
         }]
     }
 });
 
-// Production Target Circle
-new Chart(document.getElementById("targetChart"), {
-    type:"doughnut",
-    data:{
-        labels:["Completed","Remaining"],
-        datasets:[{
-            data:[75,25]
-        }]
-    }
-});
-
-// Monthly Growth
-new Chart(document.getElementById("growthChart"), {
-    type:"bar",
+// Sales Revenue
+new Chart(document.getElementById("salesChart"), {
+    type:"line",
     data:{
         labels:["Jan","Feb","Mar","Apr","May","Jun"],
         datasets:[{
-            label:"Growth %",
-            data:[10,15,20,25,30,35]
+            label:"Revenue",
+            data:[12,14,15,16,19,17]
         }]
     }
 });
 
-// Food Category Sales
-new Chart(document.getElementById("foodChart"), {
-    type:"pie",
+// Category
+new Chart(document.getElementById("categoryChart"), {
+    type:"doughnut",
     data:{
-        labels:["Snacks","Meals","Beverages","Desserts"],
+        labels:["Bakery","Snacks","Drinks","Packed Food"],
         datasets:[{
-            data:[30,40,15,15]
+            data:[40,25,20,15]
         }]
     }
 });
 
-// Revenue trend
-new Chart(document.getElementById("revenueChart"), {
-    type:"line",
-    data:{
-        labels:["Jan","Feb","Mar","Apr","May"],
-        datasets:[{
-            data:[100,120,130,150,220]
-        }]
-    }
-});
-
-// Customer chart
+// Customer
 new Chart(document.getElementById("customerChart"), {
     type:"line",
     data:{
         labels:["Jan","Feb","Mar","Apr","May"],
         datasets:[{
-            data:[40,50,60,70,78]
+            data:[50,60,72,80,92]
         }]
     }
 });
 
-// Cost chart
+// Cost
 new Chart(document.getElementById("costChart"), {
     type:"bar",
     data:{
         labels:["Jan","Feb","Mar","Apr","May"],
         datasets:[{
-            data:[250,220,190,150,120]
+            data:[10,12,14,15,18]
+        }]
+    }
+});
+
+// Growth
+new Chart(document.getElementById("growthChart"), {
+    type:"line",
+    data:{
+        labels:["Jan","Feb","Mar","Apr","May"],
+        datasets:[{
+            data:[4,7,10,12,15]
         }]
     }
 });
