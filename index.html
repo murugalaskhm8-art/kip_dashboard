@@ -3,75 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales KPI Dashboard</title>
+    <title>Food Production KPI Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-<div class="container">
-    <h1>Sales KPI Dashboard</h1>
+<div class="dashboard">
 
-    <div class="cards">
-        <div class="card">
-            <h3>Total Sales</h3>
-            <p>₹5,25,000</p>
+    <h1>Food Production KPI Dashboard</h1>
+
+    <div class="top-section">
+
+        <div class="left-cards">
+            <div class="card">
+                <h2>1250</h2>
+                <p>Food Orders Today</p>
+            </div>
+
+            <div class="card">
+                <h2>₹4,25,000</h2>
+                <p>Monthly Revenue</p>
+            </div>
+
+            <div class="card">
+                <h2>850 KG</h2>
+                <p>Production Output</p>
+            </div>
         </div>
 
-        <div class="card">
-            <h3>Orders</h3>
-            <p>1,250</p>
+        <div class="chart-card big-chart">
+            <h3>Weekly Food Production</h3>
+            <canvas id="productionChart"></canvas>
         </div>
 
-        <div class="card">
-            <h3>Customers</h3>
-            <p>850</p>
+        <div class="chart-card progress-card">
+            <h3>Production Target</h3>
+            <canvas id="targetChart"></canvas>
         </div>
 
-        <div class="card">
-            <h3>Profit</h3>
-            <p>₹1,10,000</p>
+    </div>
+
+    <div class="bottom-section">
+
+        <div class="chart-card">
+            <h3>Monthly Growth</h3>
+            <canvas id="growthChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+            <h3>Food Category Sales</h3>
+            <canvas id="foodChart"></canvas>
+        </div>
+
+        <div class="right-side">
+
+            <div class="small-card">
+                <h2>₹220</h2>
+                <p>Average Revenue / Product</p>
+                <canvas id="revenueChart"></canvas>
+            </div>
+
+            <div class="small-card">
+                <h2>78%</h2>
+                <p>Customer Satisfaction</p>
+                <canvas id="customerChart"></canvas>
+            </div>
+
+            <div class="small-card">
+                <h2>₹120</h2>
+                <p>Production Cost / Unit</p>
+                <canvas id="costChart"></canvas>
+            </div>
+
         </div>
     </div>
 
-    <div class="chart-box">
-        <canvas id="salesChart"></canvas>
-    </div>
-
-    <div class="chart-container">
-        <div class="chart-box">
-            <canvas id="profitChart"></canvas>
-        </div>
-
-        <div class="chart-box">
-            <canvas id="categoryChart"></canvas>
-        </div>
-    </div>
-
-    <h2>Recent Sales</h2>
-
-    <table>
-        <tr>
-            <th>Product</th>
-            <th>Category</th>
-            <th>Sales</th>
-        </tr>
-        <tr>
-            <td>Laptop</td>
-            <td>Electronics</td>
-            <td>₹75,000</td>
-        </tr>
-        <tr>
-            <td>Phone</td>
-            <td>Electronics</td>
-            <td>₹45,000</td>
-        </tr>
-        <tr>
-            <td>Chair</td>
-            <td>Furniture</td>
-            <td>₹15,000</td>
-        </tr>
-    </table>
 </div>
 
 <script src="script.js"></script>
